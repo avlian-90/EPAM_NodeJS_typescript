@@ -16,7 +16,7 @@ csvFiles.forEach((csvFile: string) => {
 
     fs.createReadStream(csvFilePath)
         .pipe(csv())
-        .on("data", (data: object) => {
+        .on("data", (data) => {
         records.push(data);
         recordCount++;
         })

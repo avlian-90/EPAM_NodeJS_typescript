@@ -13,7 +13,7 @@ export default class Converter {
     start(): object {
         return new Promise<void>((resolve, reject) => {
             
-            fs.readdir(this.directoryPath, (err, files: string[]) => {
+            fs.readdir(this.directoryPath, (err, files) => {
                 if (err) {
                     console.error(err);
                     reject(err);

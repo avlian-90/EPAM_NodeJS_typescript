@@ -69,7 +69,7 @@ const server = createServer((req, res) => {
   
     try {
       if (fs.existsSync(filePath)) {
-        const fileContent = fs.readFileSync(filePath, "utf8");
+        const fileContent: string = fs.readFileSync(filePath, "utf8");
   
         res.writeHead(200, {"Content-Type": "application/json"});
         res.end(fileContent);
