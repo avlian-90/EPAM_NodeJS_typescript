@@ -42,7 +42,7 @@ export default class Converter {
                     const start: number = i * recordsPerWorker;
                     const end: number = start + recordsPerWorker;
 
-                    const worker = new Worker("./src/worker.ts", {
+                    const worker = new Worker("./dist/worker.js", {
                         workerData: {
                             directoryPath: this.directoryPath,
                             csvFiles: csvFiles.slice(start, end)

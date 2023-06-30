@@ -1,7 +1,7 @@
 import { createServer } from "http";
 import path from "path";
 import fs from "fs";
-import Converter from "./converter.js";
+import Converter from "./converter";
 
 const server = createServer((req, res) => {
     if (req.method === "POST" && req.url === "/exports") {
