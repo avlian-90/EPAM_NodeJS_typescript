@@ -1,7 +1,7 @@
 import {workerData, parentPort} from "worker_threads"
 import csv from "csv-parser"
 import path from "path";
-import fs from "fs"
+import fs from "fs";
 
 
 const { csvFiles, directoryPath } = workerData;

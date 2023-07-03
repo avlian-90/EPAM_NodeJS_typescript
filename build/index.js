@@ -10,7 +10,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 import { createServer } from "http";
 import path from "path";
 import fs from "fs";
-import Converter from "./converter.js";
+import Converter from "./converter";
 const server = createServer((req, res) => {
     var _a, _b;
     if (req.method === "POST" && req.url === "/exports") {

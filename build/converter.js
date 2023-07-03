@@ -29,7 +29,7 @@ export default class Converter {
                 for (let i = 0; i < workersCount; i++) {
                     const start = i * recordsPerWorker;
                     const end = start + recordsPerWorker;
-                    const worker = new Worker("./src/worker.ts", {
+                    const worker = new Worker(new URL("./src/worker.ts", import.meta.url).pathname, {
                         workerData: {
                             directoryPath: this.directoryPath,
                             csvFiles: csvFiles.slice(start, end)
