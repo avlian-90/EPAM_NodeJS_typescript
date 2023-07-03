@@ -1,33 +1,16 @@
-// {
-//   "compilerOptions": {
-//     "target": "es5",                          
-//     "module": "CommonJS",                    
-//     "lib": ["es6"],                     
-//     "allowJs": true,
-//     "outDir": "build",                          
-//     "rootDir": "src",
-//     "strict": true,         
-//     "noImplicitAny": true,
-//     "esModuleInterop": true,
-//     "resolveJsonModule": true
-//   }
-// }
-
 {
-  "compilerOptions": {
-    "target": "es6",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "module": "esnext",
-    "moduleResolution": "node",
-    "lib": ["es2016", "esnext", "dom"],
-    "outDir": "build",
+  "compilerOptions": {                        
+    "target": "ES6",                               
+    "module": "CommonJS",                          
+    "outDir": "./dist",                             
+    "rootDir": "./src",                             
     "strict": true,
-    "strictNullChecks": true,
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "declaration": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,              
   },
-  "include": ["src/index.ts"],
-  "exclude": ["build"]
+  "exclude": [
+    "./node_modules"
+  ]
 }
+
+

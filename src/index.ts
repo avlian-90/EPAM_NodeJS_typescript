@@ -1,4 +1,4 @@
-import { createServer } from "http";
+import { IncomingMessage, ServerResponse, createServer } from "http";
 import path from "path";
 import fs from "fs";
 import Converter from "./converter";
@@ -7,7 +7,7 @@ const server = createServer((req, res) => {
     if (req.method === "POST" && req.url === "/exports") {
       handleExportRequest(req, res);
     } else if (req.method === "GET" && req.url === "/files") {
-      handleGetFilesRequest(req, res);
+      handleGetFilesRequest(res);
     } else if (req.method === "GET" && req.url?.startsWith("/files/")) {
       handleGetFileRequest(req, res);
     } else if (req.method === "DELETE" && req.url?.startsWith("/files/")) {
@@ -18,7 +18,7 @@ const server = createServer((req, res) => {
     }
   });
   
-  function handleExportRequest(req: any, res: any):void {
+  function handleExportRequest(req: IncomingMessage, res: ServerResponse):void {
     let body: string = "";
   
     req.on("data", (chunk: string) => {
@@ -49,7 +49,7 @@ const server = createServer((req, res) => {
     });
   }
   
-  function handleGetFilesRequest(req: any, res: any):void {
+  function handleGetFilesRequest(res: ServerResponse):void {
     try {
       const jsonFiles: string[] = fs.readdirSync("converted");
   
@@ -63,8 +63,8 @@ const server = createServer((req, res) => {
     }
   }
   
-  function handleGetFileRequest(req: any, res: any):void {
-    const fileName: string = req.url.split("/")[2].split(":")[1] + ".json";
+  function handleGetFileRequest(req: IncomingMessage, res: ServerResponse):void {
+    const fileName: string = req.url!.split("/")[2].split(":")[1] + ".json";
     const filePath: string = path.join("converted", fileName);
   
     try {
@@ -84,8 +84,8 @@ const server = createServer((req, res) => {
     }
   }
   
-  function handleDeleteFileRequest(req: any, res: any):void {
-    const fileName: string = req.url.split("/")[2].split(":")[1] + ".json";
+  function handleDeleteFileRequest(req: IncomingMessage, res: ServerResponse):void {
+    const fileName: string = req.url!.split("/")[2].split(":")[1] + ".json";
     const filePath: string = path.join("converted", fileName);
   
     try {
